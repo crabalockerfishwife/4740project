@@ -53,6 +53,21 @@ for ( i in 1:nrow(cleaned_movies_metadata) ){
 cleaned_movies_metadata <- cleaned_movies_metadata[, c("revenue", "budget", "original_language", 
                                                        "year", "month", "runtime", "genre") ]
 
+
+# Separate data into training and test set
+
+## 50% - 50% split
+smp_size <- floor(0.50 * nrow(cleaned_movies_metadata))
+
+## set the seed to make the partition reproductible
+set.seed(123)
+train_ind <- sample(seq_len(nrow(cleaned_movies_metadata)), size = smp_size)
+
+train <- cleaned_movies_metadata[train_ind, ]
+test <- cleaned_movies_metadata[-train_ind, ]
+
 # Use these to view/see and summary of the data
+View(train)
+View(test)
 View(cleaned_movies_metadata)
 str(cleaned_movies_metadata)
