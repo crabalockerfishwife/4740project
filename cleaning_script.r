@@ -49,6 +49,8 @@ for ( i in 1:nrow(cleaned_movies_metadata) ){
   cleaned_movies_metadata$genre[i] = genre
 }
 
+cleaned_movies_metadata$genre <- as.factor(cleaned_movies_metadata$genre)
+
 # Get rid of unneccessary fields genres
 cleaned_movies_metadata <- cleaned_movies_metadata[, c("revenue", "budget", "original_language", 
                                                        "year", "month", "runtime", "genre") ]
