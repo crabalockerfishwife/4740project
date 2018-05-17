@@ -5,7 +5,7 @@ library(lubridate)
 View(movies_metadata) # View original dataset
 
 # Select the fields we're interested in
-cleaned_movies_metadata <- movies_metadata[, c("revenue", "budget", "genres", "original_language", 
+cleaned_movies_metadata <- movies_metadata[, c("id", "revenue", "budget", "genres", "original_language", 
                                                "release_date", "runtime") ]
 
 # Remove rows containing zeros
@@ -22,7 +22,7 @@ cleaned_movies_metadata <- cleaned_movies_metadata %>%
 cleaned_movies_metadata$month <- as.factor(cleaned_movies_metadata$month)
 
 # Get rid of unneccessary release_date field now
-cleaned_movies_metadata <- cleaned_movies_metadata[, c("revenue", "budget", "genres", "original_language", 
+cleaned_movies_metadata <- cleaned_movies_metadata[, c("id", "revenue", "budget", "genres", "original_language", 
                                                        "year", "month", "runtime") ]
 
 # Convert original language to an integer field
@@ -52,7 +52,7 @@ for ( i in 1:nrow(cleaned_movies_metadata) ){
 cleaned_movies_metadata$genre <- as.factor(cleaned_movies_metadata$genre)
 
 # Get rid of unneccessary fields genres
-cleaned_movies_metadata <- cleaned_movies_metadata[, c("revenue", "budget", "original_language", 
+cleaned_movies_metadata <- cleaned_movies_metadata[, c("id", "revenue", "budget", "original_language", 
                                                        "year", "month", "runtime", "genre") ]
 
 # Dealing with factor fields --> need to create dummy fields
@@ -209,7 +209,7 @@ cleaned_movies_metadata$summer <- as.factor(cleaned_movies_metadata$summer)
 cleaned_movies_metadata$fall <- as.factor(cleaned_movies_metadata$fall)
 
 # Select the fields we're interested in
-cleaned_movies_metadata <- cleaned_movies_metadata[, c("revenue", "budget", "year", "runtime", 
+cleaned_movies_metadata <- cleaned_movies_metadata[, c("id", "revenue", "budget", "year", "runtime", 
       "language1", "language2", "language3", "Action", "Adventure", "Animation", "Comedy", "Crime", "Documentary",
       "Drama", "Family", "Fantasy", "Foreign", "History", "Horror", "Music", "Mystery", "Romance", "Science_Fiction",
       "Thriller", "TV_Movie", "War", "Western", "winter", "spring", "summer", "fall") ]
